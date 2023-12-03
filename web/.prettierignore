@@ -1,0 +1,6 @@
+build
+coverage
+.package-lock.json
+*.min.*
+node_modules/
+.vscode/
