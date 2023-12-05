@@ -1,6 +1,6 @@
 import React from 'react';
-import classes, { StyledContainer } from './Layout-styles';
 
+import classes, { StyledContainer } from './Layout-styles';
 import Footer from '../Footer';
 import Header from '../Header';
 

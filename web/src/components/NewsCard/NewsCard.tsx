@@ -1,5 +1,6 @@
 import { CardContent, CardMedia, Link, Typography } from '@mui/material';
 import { DriveFileRenameOutline as DriveFileRenameOutlineIcon } from '@mui/icons-material';
+
 import { Article } from '../../types/article';
 import classes, { StyledCard } from './NewsCard-styles';
 
@@ -31,7 +32,13 @@ const NewsCard = (props: NewsCardProps) => {
           {article.description}
         </Typography>
       </CardContent>
-      <CardMedia className={classes.cardMedia} image={article.urlToImage} title={article.title} />
+      <CardMedia
+        component="img"
+        loading="lazy"
+        className={classes.cardMedia}
+        image={article.urlToImage}
+        title={article.title}
+      />
     </StyledCard>
   );
 };

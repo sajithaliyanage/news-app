@@ -7,29 +7,33 @@ const initialState: NewsState = {
   filter: {
     query: 'apple',
     language: 'en',
+    page: 1,
+    pageSize: 6,
     sortBy: 'publishedAt',
   },
   articles: [],
   noResults: false,
-  pagination: {},
+  pagination: {
+    next: null,
+    prev: null,
+  },
   totalResults: 0,
   error: null,
   isBusy: false,
   isMoreLoading: false,
-  isPaged: false,
 };
 
 const newsReducer = createSlice({
   name: 'news',
   initialState,
   reducers: {
-    updateFilter: (state, action) => {
-      state.filter = {
-        query: action.payload.query,
-        language: action.payload.language,
-        sortBy: action.payload.sortBy,
-      };
-      state.isMoreLoading = action.payload.isMoreLoading;
+    updateNewsTopic: (state, action) => {
+      state.filter.query = action.payload.query;
+      state.articles = [];
+    },
+    updateNewsLanguage: (state, action) => {
+      state.filter.language = action.payload.language;
+      state.articles = [];
     },
     updatePagination: (state, action) => {
       state.isMoreLoading = action.payload.isMoreLoading;
@@ -41,10 +45,11 @@ const newsReducer = createSlice({
         state.isBusy = true;
       })
       .addCase(getNewsByQuery.fulfilled, (state, action) => {
-        state.articles = state.isPaged
+        state.articles = state.pagination.next
           ? state.articles.concat(action.payload.articles)
           : action.payload.articles;
         state.totalResults = action.payload.totalResults;
+        state.pagination = action.payload.pagination;
         state.isBusy = false;
         state.isMoreLoading = false;
       })
@@ -56,6 +61,6 @@ const newsReducer = createSlice({
   },
 });
 
-export const { updateFilter, updatePagination } = newsReducer.actions;
+export const { updateNewsTopic, updateNewsLanguage, updatePagination } = newsReducer.actions;
 
 export default newsReducer.reducer;

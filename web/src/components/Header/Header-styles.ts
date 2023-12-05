@@ -15,10 +15,12 @@ export const StyledDiv = styled('div')({
   alignItems: 'center',
   justifyContent: 'center',
   minHeight: 64,
+  paddingLeft: '16px',
+  paddingRight: '16px',
   [`& .${classes.appBar}`]: {
     display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center'
+    justifyContent: 'space-between',
+    flexDirection: 'row'
   },
   [`& .${classes.iconTitle}`]: {
     display: 'flex',

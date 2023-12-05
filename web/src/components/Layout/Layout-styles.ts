@@ -10,7 +10,7 @@ const classes = {
 export const StyledContainer = styled(Container)({
   display: 'flex',
   flexDirection: 'column',
-  height: '100%',
+  height: '100vh',
   [`& .${classes.container}`]: {
     flexGrow: 1,
     display: 'flex',
