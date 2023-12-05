@@ -1,13 +1,16 @@
-import CssBaseline from '@mui/material/CssBaseline';
+import { lazy, Suspense } from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
+import CssBaseline from '@mui/material/CssBaseline';
 
 import Layout from './components/Layout';
-import News from './pages/News';
+import LazyProgress from './components/LazyProgress';
 
-let routes = (
+const News = lazy(() => import('./pages/News'));
+
+const routes = (
   <Routes>
-    <Route path='/' element={<News />} />
-    <Route path='*' element={<Navigate to='/' />} />
+    <Route path="/" element={<News />} />
+    <Route path="*" element={<Navigate to="/" />} />
   </Routes>
 );
 
@@ -16,7 +19,7 @@ const App = () => {
     <>
       <CssBaseline />
       <Layout>
-        {routes}
+        <Suspense fallback={<LazyProgress />}>{routes}</Suspense>
       </Layout>
     </>
   );
