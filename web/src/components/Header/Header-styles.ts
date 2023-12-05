@@ -1,4 +1,3 @@
-import { Container } from '@mui/material';
 import { styled } from '@mui/material/styles';
 
 const PREFIX = 'Header';
@@ -10,14 +9,12 @@ const classes = {
   icon: `${PREFIX}-icon`,
 };
 
-export const StyledContainer = styled(Container)({
-  [`& .${classes.root}`]: {
-    display: 'flex',
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-    minHeight: 64,
-  },
+export const StyledDiv = styled('div')({
+  display: 'flex',
+  flexDirection: 'row',
+  alignItems: 'center',
+  justifyContent: 'center',
+  minHeight: 64,
   [`& .${classes.appBar}`]: {
     display: 'flex',
     justifyContent: 'center',

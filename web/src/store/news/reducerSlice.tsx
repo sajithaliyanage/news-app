@@ -1,18 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-import { Filter } from '../../types/filter';
 import { getNewsByQuery } from './thunks';
+import { NewsState } from '../../types/newsState';
 
-const initialState: {
-  filter: Filter;
-  articles: any[];
-  noResults: boolean;
-  pagination: any;
-  totalResults: number;
-  error: any;
-  isBusy: boolean;
-  isMoreLoading: boolean;
-} = {
+const initialState: NewsState = {
   filter: {
     query: 'apple',
     language: 'en',
@@ -25,6 +16,7 @@ const initialState: {
   error: null,
   isBusy: false,
   isMoreLoading: false,
+  isPaged: false,
 };
 
 const newsReducer = createSlice({
@@ -49,7 +41,9 @@ const newsReducer = createSlice({
         state.isBusy = true;
       })
       .addCase(getNewsByQuery.fulfilled, (state, action) => {
-        state.articles = action.payload.articles;
+        state.articles = state.isPaged
+          ? state.articles.concat(action.payload.articles)
+          : action.payload.articles;
         state.totalResults = action.payload.totalResults;
         state.isBusy = false;
         state.isMoreLoading = false;

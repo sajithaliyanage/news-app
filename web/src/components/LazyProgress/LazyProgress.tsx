@@ -1,16 +1,14 @@
 import { CircularProgress, Typography } from '@mui/material';
-import classes, { StyledContainer } from './LazyProgress-styles';
+import classes, { StyledDiv } from './LazyProgress-styles';
 
 export const LazyProgress = () => {
   return (
-    <StyledContainer>
-      <div className={classes.root}>
-        <CircularProgress />
-        <Typography className={classes.LoadingLabel} variant="body2" color="textSecondary">
-          Loading
-        </Typography>
-      </div>
-    </StyledContainer>
+    <StyledDiv>
+      <CircularProgress />
+      <Typography className={classes.LoadingLabel} variant="body2" color="textSecondary">
+        Loading
+      </Typography>
+    </StyledDiv>
   );
 };
 
