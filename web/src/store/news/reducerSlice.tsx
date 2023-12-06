@@ -21,6 +21,7 @@ const initialState: NewsState = {
   error: null,
   isBusy: false,
   isMoreLoading: false,
+  showError: false,
 };
 
 const newsReducer = createSlice({
@@ -41,6 +42,9 @@ const newsReducer = createSlice({
       state.isMoreLoading = action.payload.isMoreLoading;
       state.filter.page += 1;
     },
+    hideErrorAlert: (state) => {
+      state.showError = false;
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -59,13 +63,14 @@ const newsReducer = createSlice({
       })
       .addCase(getNewsByQuery.rejected, (state, action) => {
         state.error = action.payload;
-        state.articles = [];
         state.isBusy = false;
         state.isMoreLoading = false;
+        state.showError = true;
       });
   },
 });
 
-export const { updateNewsTopic, updateNewsLanguage, updatePagination } = newsReducer.actions;
+export const { updateNewsTopic, updateNewsLanguage, updatePagination, hideErrorAlert } =
+  newsReducer.actions;
 
 export default newsReducer.reducer;

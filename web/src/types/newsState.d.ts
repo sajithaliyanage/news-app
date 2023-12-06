@@ -15,4 +15,5 @@ export type NewsState = {
     error: unknown;
     isBusy: boolean;
     isMoreLoading: boolean;
+    showError: boolean;
 }

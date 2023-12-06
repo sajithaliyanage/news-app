@@ -1,4 +1,5 @@
 import NewsList from '../components/NewsList';
+import SnakbarNotification from '../components/SnakbarNotification';
 import TopicSelector from '../components/TopicSelector';
 
 const News = () => {
@@ -6,6 +7,7 @@ const News = () => {
     <>
       <TopicSelector />
       <NewsList />
+      <SnakbarNotification />
     </>
   );
 };
