@@ -29,14 +29,17 @@ const newsReducer = createSlice({
   reducers: {
     updateNewsTopic: (state, action) => {
       state.filter.query = action.payload.query;
+      state.filter.page = 1;
       state.articles = [];
     },
     updateNewsLanguage: (state, action) => {
       state.filter.language = action.payload.language;
+      state.filter.page = 1;
       state.articles = [];
     },
     updatePagination: (state, action) => {
       state.isMoreLoading = action.payload.isMoreLoading;
+      state.filter.page += 1;
     },
   },
   extraReducers: (builder) => {
@@ -45,9 +48,10 @@ const newsReducer = createSlice({
         state.isBusy = true;
       })
       .addCase(getNewsByQuery.fulfilled, (state, action) => {
-        state.articles = state.pagination.next
-          ? state.articles.concat(action.payload.articles)
-          : action.payload.articles;
+        state.articles =
+          state.filter.page !== 1
+            ? state.articles.concat(action.payload.articles)
+            : action.payload.articles;
         state.totalResults = action.payload.totalResults;
         state.pagination = action.payload.pagination;
         state.isBusy = false;
@@ -55,6 +59,7 @@ const newsReducer = createSlice({
       })
       .addCase(getNewsByQuery.rejected, (state, action) => {
         state.error = action.payload;
+        state.articles = [];
         state.isBusy = false;
         state.isMoreLoading = false;
       });

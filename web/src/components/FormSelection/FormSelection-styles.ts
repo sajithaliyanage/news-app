@@ -2,11 +2,17 @@ import { FormControl } from '@mui/material';
 import { styled } from '@mui/material/styles';
 
 export const StyledFormCntrol = styled(FormControl)({
-  minWidth: 120,
   height: '100%',
-  marginLeft: '12px',
-  '&:last-child': {
-    marginRight: 0,
+  marginRight: '12px',
+  display: 'flex',
+  flexDirection: 'row',
+  alignItems: 'center',
+  justifyContent: 'center',
+  [`& .MuiInputLabel-root`]: {
+    paddingTop: '2px',
   },
+  [`& .MuiSelect-root`]: {
+    fontSize: '10px',
+  }
 });
 

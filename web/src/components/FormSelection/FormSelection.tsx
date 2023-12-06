@@ -11,6 +11,7 @@ interface FormSelectionProps {
 
 const FormSelection = (props: FormSelectionProps) => {
   const { title, value, options, onChange } = props;
+
   return (
     <StyledFormCntrol variant="standard">
       <InputLabel>{title}</InputLabel>

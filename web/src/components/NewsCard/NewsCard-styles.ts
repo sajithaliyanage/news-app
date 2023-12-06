@@ -11,12 +11,12 @@ const classes = {
   cardMedia: `${PREFIX}-cardMedia`,
 };
 
-export const StyledCard = styled(Card)({
+export const StyledCard = styled(Card)(({ hasImage }: { hasImage: boolean }) => ({
   width: '100%',
   display: 'flex',
   height: 200,
   [`& .MuiCardContent-root`]: {
-    width: '60%',
+    width: hasImage ? '60%' : '100%',
   },
   [`& .${classes.title}`]: {
     lineHeight: '1.2',
@@ -33,6 +33,6 @@ export const StyledCard = styled(Card)({
     width: '40%',
     objectFit: 'cover',
   },
-});
+}));
 
 export default classes;

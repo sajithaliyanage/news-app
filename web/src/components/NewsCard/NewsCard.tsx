@@ -12,9 +12,10 @@ const NewsCard = (props: NewsCardProps) => {
   const { article } = props;
 
   const articlePublishedAt: string = new Date(article.publishedAt).toLocaleString();
+  const hasNewsImage = !!article.urlToImage;
 
   return (
-    <StyledCard>
+    <StyledCard hasImage={hasNewsImage}>
       <CardContent>
         <Typography gutterBottom variant="h6" className={classes.title}>
           <Link href={article.url} target="_blank" underline="hover">
@@ -32,13 +33,15 @@ const NewsCard = (props: NewsCardProps) => {
           {article.description}
         </Typography>
       </CardContent>
-      <CardMedia
-        component="img"
-        loading="lazy"
-        className={classes.cardMedia}
-        image={article.urlToImage}
-        title={article.title}
-      />
+      {hasNewsImage ? (
+        <CardMedia
+          component="img"
+          loading="lazy"
+          className={classes.cardMedia}
+          image={article.urlToImage}
+          title={article.title}
+        />
+      ) : null}
     </StyledCard>
   );
 };
