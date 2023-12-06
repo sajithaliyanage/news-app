@@ -3,6 +3,7 @@ import { AppBar, Typography } from '@mui/material';
 
 import classes, { StyledDiv } from './Header-styles';
 import LangSelector from '../LangSelector';
+import ThemeMode from '../ThemeMode';
 
 const Header = () => {
   return (
@@ -14,8 +15,9 @@ const Header = () => {
             NEWS APP
           </Typography>
         </div>
-        <div>
+        <div className={classes.actionItems}>
           <LangSelector />
+          <ThemeMode />
         </div>
       </AppBar>
     </StyledDiv>

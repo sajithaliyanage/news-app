@@ -7,6 +7,7 @@ const classes = {
   appBar: `${PREFIX}-appBar`,
   iconTitle: `${PREFIX}-iconTitle`,
   icon: `${PREFIX}-icon`,
+  actionItems: `${PREFIX}-actionItems`,
 };
 
 export const StyledDiv = styled('div')({
@@ -30,6 +31,12 @@ export const StyledDiv = styled('div')({
   },
   [`& .${classes.icon}`]: {
     marginRight: '10px'
+  },
+  [`& .${classes.actionItems}`]: {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 });
 
