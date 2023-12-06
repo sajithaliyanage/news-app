@@ -19,7 +19,7 @@ export const getNewsByQuery: AsyncThunk<NewsData, Filter, AsyncThunkConfig> = cr
   async ({ query, language, page, pageSize }: Filter, { rejectWithValue }) => {
     try {
       const response = await axios.get(
-        `http://localhost:8000/api/v1/news?q=${query}&language=${language}&from=${getLastSeventhDay()}&page=${page}&pageSize=${pageSize}`
+        `/news?q=${query}&language=${language}&from=${getLastSeventhDay()}&page=${page}&pageSize=${pageSize}`
       );
       const responseData = response.data;
       if (responseData.totalResults > page * pageSize) {

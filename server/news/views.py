@@ -4,14 +4,13 @@ import requests
 from rest_framework.decorators import api_view
 
 from news.utils import ErrorResponse
+from server.settings import NEWS_API_URL
+from server.settings import NEWS_API_KEY
 
 
 @api_view(['GET'])
 def read_news(request):
     try:
-        api_key = "9cccd81d96c349d0988f72b195885f7c"
-        base_url = "https://newsapi.org/v2/everything"
-
         if 'q' not in request.query_params:
             return ErrorResponse('Please provide the \'q\' query param')
 
@@ -36,11 +35,11 @@ def read_news(request):
             'pageSize': int(request.query_params.get('pageSize', 100)),
             'sortBy': request.query_params.get('q', 'publishedAt'),
             'language': request.query_params.get('language'),
-            'apiKey': api_key,
+            'apiKey': NEWS_API_KEY,
         }
 
 
-        response = requests.get(base_url, params=query_params)
+        response = requests.get(NEWS_API_URL, params=query_params)
         if response.status_code != 200:
             raise requests.RequestException("Unexpected response received")
 
