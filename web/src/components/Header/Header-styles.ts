@@ -10,14 +10,14 @@ const classes = {
   actionItems: `${PREFIX}-actionItems`,
 };
 
-export const StyledDiv = styled('div')({
+export const StyledDiv = styled('div')(({ theme }) => ({
   display: 'flex',
   flexDirection: 'row',
   alignItems: 'center',
   justifyContent: 'center',
-  minHeight: 64,
-  paddingLeft: '16px',
-  paddingRight: '16px',
+  minHeight: '64px',
+  paddingLeft: theme.spacing(2),
+  paddingRight: theme.spacing(2),
   [`& .${classes.appBar}`]: {
     display: 'flex',
     justifyContent: 'space-between',
@@ -30,7 +30,7 @@ export const StyledDiv = styled('div')({
     alignItems: 'center'
   },
   [`& .${classes.icon}`]: {
-    marginRight: '10px'
+    marginRight: theme.spacing(1.4),
   },
   [`& .${classes.actionItems}`]: {
     display: 'flex',
@@ -38,6 +38,6 @@ export const StyledDiv = styled('div')({
     alignItems: 'center',
     justifyContent: 'center',
   },
-});
+}));
 
 export default classes;

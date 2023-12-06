@@ -27,7 +27,6 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -35,6 +34,7 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.messages',
     'rest_framework',
+    'corsheaders',
     'news'
 ]
 
@@ -42,6 +42,14 @@ ROOT_URLCONF = 'server.urls'
 
 WSGI_APPLICATION = 'server.wsgi.application'
 
+CORS_ORIGIN_ALLOW_ALL = False
+CORS_ORIGIN_WHITELIST = (
+  'http://localhost:3000',
+)
+
+MIDDLEWARE = [
+  'corsheaders.middleware.CorsMiddleware',
+]
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases

@@ -1,25 +1,17 @@
 import { styled } from '@mui/material/styles';
 
-const PREFIX = 'TopicSelector';
-
-const classes = {
-  container: `${PREFIX}-container`,
-};
-
-export const StyledDiv = styled("div")({
+export const StyledDiv = styled("div")(({ theme }) => ({
   width: '100%',
-  marginLeft: '16px',
-  marginRight: '16px',
+  marginLeft: theme.spacing(2),
+  marginRight: theme.spacing(2),
   display: 'flex',
   flexWrap: 'wrap',
-  marginTop: '8px',
-  marginBottom: '8px',
+  marginTop: theme.spacing(1),
+  marginBottom: theme.spacing(1),
   alignItems: 'center',
   justifyContent: 'center',
   [`& .MuiChip-root`]: {
     width: '100px',
-    margin: '8px',
+    margin: theme.spacing(1),
   },
-});
-
-export default classes;
+}));

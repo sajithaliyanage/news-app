@@ -28,7 +28,6 @@ def read_news(request):
         if query_language not in allowed_language_values:
             return ErrorResponse(f'Invalid value for \'language\' query param. Allowed values are: '
                                  f'{", ".join(allowed_language_values)}')
-
         query_params = {
             'q': request.query_params.get('q'),
             'from': request.query_params.get('from',
@@ -39,6 +38,7 @@ def read_news(request):
             'language': request.query_params.get('language'),
             'apiKey': api_key,
         }
+
 
         response = requests.get(base_url, params=query_params)
         if response.status_code != 200:

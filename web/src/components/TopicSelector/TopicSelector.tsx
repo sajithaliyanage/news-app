@@ -1,3 +1,5 @@
+import { AnyAction } from 'redux';
+import { ThunkDispatch } from '@reduxjs/toolkit';
 import { useDispatch, useSelector } from 'react-redux';
 import { Chip } from '@mui/material';
 
@@ -9,7 +11,7 @@ import { SelectionItem } from '../../types/selectItems';
 import { StyledDiv } from './TopicSelector-styles';
 
 const TopicSelector = () => {
-  const dispatch = useDispatch<any>();
+  const dispatch = useDispatch<ThunkDispatch<RootState, unknown, AnyAction>>();
   const filter: Filter = useSelector((state: RootState) => state.news.filter);
 
   const getSelectedNewsTopicHandler = (value: string) => {

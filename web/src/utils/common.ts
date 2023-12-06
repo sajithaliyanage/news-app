@@ -30,3 +30,10 @@ export const toProperCase = (text: string): string => {
         return matchedText.charAt(0).toUpperCase() + matchedText.substr(1).toLowerCase();
     });
 };
+
+export const getLastSeventhDay = (): string => {
+    const currentDate: Date = new Date();
+    const lastSeventhDay: Date = new Date(currentDate);
+    lastSeventhDay.setDate(currentDate.getDate() - 7);
+    return lastSeventhDay.toLocaleDateString('en-CA');
+};

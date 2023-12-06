@@ -1,3 +1,5 @@
+import { AnyAction } from 'redux';
+import { ThunkDispatch } from '@reduxjs/toolkit';
 import { useDispatch, useSelector } from 'react-redux';
 import { SelectChangeEvent } from '@mui/material';
 
@@ -8,7 +10,7 @@ import { updateNewsLanguage } from '../../store/news/reducerSlice';
 import { updateDirection } from '../../store/theme/reducerSlice';
 
 const LangSelector = () => {
-  const dispatch = useDispatch<any>();
+  const dispatch = useDispatch<ThunkDispatch<RootState, unknown, AnyAction>>();
   const language: string = useSelector((state: RootState) => state.news.filter.language);
 
   const getSelectedNewsLanguageHandler = (event: SelectChangeEvent<unknown>) => {

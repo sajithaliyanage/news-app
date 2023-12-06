@@ -1,3 +1,5 @@
+import { AnyAction } from 'redux';
+import { ThunkDispatch } from '@reduxjs/toolkit';
 import { useDispatch, useSelector } from 'react-redux';
 import { IconButton, InputLabel, PaletteOptions } from '@mui/material';
 import Brightness4Icon from '@mui/icons-material/Brightness4';
@@ -8,7 +10,7 @@ import { updateTheme } from '../../store/theme/reducerSlice';
 import classes, { StyledDiv } from './ThemeMode-styles';
 
 const ThemeMode = () => {
-  const dispatch = useDispatch<any>();
+  const dispatch = useDispatch<ThunkDispatch<RootState, unknown, AnyAction>>();
   const themeMode: PaletteOptions = useSelector((state: RootState) => state.theme.palette);
 
   const changeThemeHandler = () => {

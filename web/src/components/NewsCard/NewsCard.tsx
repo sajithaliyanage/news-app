@@ -1,21 +1,24 @@
 import { CardContent, CardMedia, Link, Typography } from '@mui/material';
 import { DriveFileRenameOutline as DriveFileRenameOutlineIcon } from '@mui/icons-material';
+import { useTheme } from '@mui/system';
+import { Theme } from '@mui/material/styles';
 
 import { Article } from '../../types/article';
 import classes, { StyledCard } from './NewsCard-styles';
 
-interface NewsCardProps {
+type NewsCardProps = {
   article: Article;
-}
+};
 
 const NewsCard = (props: NewsCardProps) => {
   const { article } = props;
+  const theme: Theme = useTheme();
 
   const articlePublishedAt: string = new Date(article.publishedAt).toLocaleString();
   const hasNewsImage = !!article.urlToImage;
 
   return (
-    <StyledCard hasImage={hasNewsImage}>
+    <StyledCard hasImage={hasNewsImage} theme={theme}>
       <CardContent>
         <Typography gutterBottom variant="h6" className={classes.title}>
           <Link href={article.url} target="_blank" underline="hover">
@@ -28,8 +31,8 @@ const NewsCard = (props: NewsCardProps) => {
             {article.author} | {articlePublishedAt}
           </Typography>
         </div>
-        <hr />
-        <Typography variant="body2" color="text.secondary">
+        <hr className={classes.cardBody} />
+        <Typography variant="body2" color="text.secondary" className={classes.cardBody}>
           {article.description}
         </Typography>
       </CardContent>

@@ -1,4 +1,6 @@
 import { useEffect } from 'react';
+import { AnyAction } from 'redux';
+import { ThunkDispatch } from '@reduxjs/toolkit';
 import { useDispatch, useSelector } from 'react-redux';
 import { List, ListItem } from '@mui/material';
 
@@ -14,7 +16,7 @@ import { RootState } from '../../store/store';
 import { getNewsByQuery } from '../../store/news/thunks';
 
 const NewsLists = () => {
-  const dispatch = useDispatch<any>();
+  const dispatch = useDispatch<ThunkDispatch<RootState, unknown, AnyAction>>();
   const totalResults: number = useSelector((state: RootState) => state.news.totalResults);
   const isBusy: boolean = useSelector((state: RootState) => state.news.isBusy);
   const isMoreLoading: boolean = useSelector((state: RootState) => state.news.isMoreLoading);

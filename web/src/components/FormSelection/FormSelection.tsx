@@ -2,12 +2,12 @@ import { InputLabel, MenuItem, Select, SelectChangeEvent } from '@mui/material';
 import { StyledFormCntrol } from './FormSelection-styles';
 import { SelectionItem } from '../../types/selectItems';
 
-interface FormSelectionProps {
+type FormSelectionProps = {
   title: string;
   value: string;
   options: SelectionItem[];
   onChange: (event: SelectChangeEvent<unknown>, child: React.ReactNode) => void;
-}
+};
 
 const FormSelection = (props: FormSelectionProps) => {
   const { title, value, options, onChange } = props;

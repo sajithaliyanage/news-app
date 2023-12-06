@@ -8,9 +8,9 @@ const classes = {
   cardContent: `${PREFIX}-cardContent`,
 };
 
-export const StyledCard = styled(Card)({
+export const StyledCard = styled(Card)(({ theme }) => ({
   width: '100%',
-  marginTop: '10px',
+  marginTop: theme.spacing(1.4),
   height: '160px',
   display: 'flex',
   flexDirection: 'column',
@@ -23,8 +23,8 @@ export const StyledCard = styled(Card)({
     justifyContent: 'center'
   },
   [`& .${classes.typography}`]: {
-    marginTop: '5px',
+    marginTop: theme.spacing(0.6),
   }
-});
+}));
 
 export default classes;

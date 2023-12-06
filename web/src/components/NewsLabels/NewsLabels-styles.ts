@@ -1,11 +1,11 @@
 import { styled } from '@mui/material/styles';
 
-export const StyledDiv = styled("div")({
+export const StyledDiv = styled("div")(({ theme }) => ({
   width: '100%',
-  marginLeft: '32px',
-  marginRight: '32px',
+  marginTop: theme.spacing(1),
+  paddingLeft: theme.spacing(2),
+  paddingRight: theme.spacing(2),
   display: 'flex',
   flexDirection: 'row',
-  justifyContent: 'space-between',
   alignItems: 'center',
-});
+}));

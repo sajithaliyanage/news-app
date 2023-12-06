@@ -2,3 +2,4 @@ Django==3.2.3
 djangorestframework==3.12.4
 requests~=2.31.0
 urllib3==1.26.6
+django-cors-headers

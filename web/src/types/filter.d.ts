@@ -20,4 +20,3 @@ export type Language = {
     type: string;
     label: string;
 }
-

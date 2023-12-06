@@ -3,11 +3,11 @@ import { Typography } from '@mui/material';
 
 import { StyledDiv } from './NewsLabels-styles';
 
-interface NewsLabelProps {
+type NewsLabelProps = {
   loadedCount: number;
   totalCount: number;
   topic: string;
-}
+};
 
 const NewsLabels = (props: NewsLabelProps) => {
   const { loadedCount, totalCount } = props;
@@ -16,7 +16,7 @@ const NewsLabels = (props: NewsLabelProps) => {
     <StyledDiv>
       <Typography>
         Showing {numeral(loadedCount).format('0,0')} out of {numeral(totalCount).format('0,0')}{' '}
-        results for the selected topic
+        results for the selected topic within the past 7 days
       </Typography>
     </StyledDiv>
   );

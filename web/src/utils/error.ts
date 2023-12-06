@@ -11,7 +11,7 @@ const getResponseStatus = (status: number | undefined): string => {
     }
 }
 
-export const getAPIErrorMessage = (error: any, defaultMessage = "Ops, something went wrong"): string => {
+export const getAPIErrorMessage = (error: unknown, defaultMessage = "Ops, something went wrong"): string => {
     if (axios.isAxiosError(error)) {
         return getResponseStatus(error.response?.status);
     }
