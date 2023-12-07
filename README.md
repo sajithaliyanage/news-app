@@ -25,9 +25,9 @@ News app is a web application developed using React/Typescript, Redux-Toolkit an
 
 ## Getting Started
 
-Follow the below steps to run the application locally.
+Follow the below steps to run the application in Docker environment.
 
- 1. Install [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) & [Docker](https://docs.docker.com/get-docker/)
+ 1. Install [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) & [Docker](https://docs.docker.com/get-docker/) and [Docker Compose](https://docs.docker.com/compose/install/)
    
  2. Clone the repository
     ```bash
@@ -40,6 +40,31 @@ Follow the below steps to run the application locally.
     ```
  4. Open browser `http://localhost:3000`
 
+or follow the below steps to run the application locally.
+
+ 1. Install [Node](https://nodejs.org/en/) and Python3 with pip3
+   
+ 2. Clone the repository
+    ```bash
+    git clone https://github.com/sajithaliyanage/news-app.git
+    ```
+
+ 3. Install and run python server
+      ```bash
+      cd server
+      export DJANGO_SECRET_KEY='django-insecure-hqqq)0)=t-bdo96ioj2n0@-bl#$sojdx*vy4vb$f621a!#6^^e'
+      export NEWS_API_KEY='5e700a18883442a8aa0dd5030ddb2712'
+      export NEWS_API_URL='https://newsapi.org/v2/everything'
+      pip3 install -r requirements.txt
+      python3 manage.py runserver 0.0.0.0:8000
+      ```
+
+ 4. Install and run React application
+      ```bash
+      cd web
+      npm install
+      REACT_APP_API_URL=http://localhost:8000/api/v1 npm start
+      ```
 
 ## Performance Optimization
 
