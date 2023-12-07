@@ -3,17 +3,31 @@
 #   service         local -> host
 #   ------------------------------
 #   api             8000  -> 8000
-#   web             3000  -> 3000
+#   web               80  -> 3000
 
 version: '3.3'
 services:
+  proxy:
+    build:
+      context: ./proxy
+    depends_on:
+      - web
+      - api
+    links:
+      - web
+      - api
+    ports:
+      - '3000:80'
+    restart: always
+    stdin_open: true
+    tty: true
   api:
     build:
       context: ./server
       dockerfile: Dockerfile
     environment:
       DJANGO_SECRET_KEY: 'django-insecure-hqqq)0)=t-bdo96ioj2n0@-bl#$sojdx*vy4vb$f621a!#6^^e'
-      NEWS_API_KEY: '9cccd81d96c349d0988f72b195885f7c'
+      NEWS_API_KEY: '5e700a18883442a8aa0dd5030ddb2712'
       NEWS_API_URL: 'https://newsapi.org/v2/everything'
     ports:
       - '8000:8000'
@@ -28,12 +42,6 @@ services:
       dockerfile: Dockerfile
       args:
         REACT_APP_API_URL: 'http://localhost:8000/api/v1'
-    ports:
-      - '3000:3000'
-    volumes:
-      - ./web:/app
-    environment:
-      NODE_ENV: 'production'
     restart: always
     stdin_open: true
     tty: true
